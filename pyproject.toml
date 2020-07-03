@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cookbooks"
+version = "0.1.0"
+description = "Cookbooks made as part of studying various coding concepts"
+authors = ["Taras Ivashchuk <taras@tarasivashchuk.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.5"
+python-dotenv = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pylint = "*"
+mypy = "*"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
