@@ -8,7 +8,7 @@ Idea is inspired by [DevDungeon](https://www.devdungeon.com "Great resource for 
 <br>[taras@tarasivashchuk.com](mailto:taras@tarasivashchuk.com "Send me an email")
 
 ## Sections
-1. [GUI](gui/README "Developing a graphical user interface")
+1. [GUI](gui/README.md "Developing a graphical user interface")
 
 
 ## License
