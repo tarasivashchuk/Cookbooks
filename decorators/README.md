@@ -10,7 +10,7 @@ Learning different ways to write Python decorator functions and different ways t
 > **THIS OUTLINE IS NOT FINAL AND WILL BE CHANGED**
 
 ##### [Basic Logging Examples](log.py)
-- [ ] Write the basic logging example
+- [x] Write the basic logging example
 - [ ] Write a logging example which can take the logging level as an argument
 - [ ] Write a logging example which can log the parent functions arguments as well
 
