@@ -6,13 +6,15 @@ authors = ["Taras Ivashchuk <taras@tarasivashchuk.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.5"
+python = ">=3.6"
 python-dotenv = "*"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
-pylint = "*"
 mypy = "*"
+black = "*"
+isort = "*"
+flake8 = "*"
 
 [build-system]
 requires = ["poetry>=0.12"]
