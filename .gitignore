@@ -1,6 +1,8 @@
-venv
-.DS_Store
+# Runtime cache directories
 __pycache__
 .pytest_cache
-*.pyc
 .mypy_cache
+
+# IDEs
+.vscode
+.idea
