@@ -1,3 +1,7 @@
+# Deep learning data and TensorBoard runs
+deep_learning/data
+deep_learning/runs
+
 # Runtime cache directories
 __pycache__
 .pytest_cache
