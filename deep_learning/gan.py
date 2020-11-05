@@ -1,4 +1,5 @@
 import torch
+from torch.nn.modules import loss
 import torchvision
 from torch import nn, optim
 from torch.utils.data import DataLoader
@@ -37,9 +38,9 @@ class Generator(nn.Module):
 
 device = "cuda"
 lr = 3e-4
-z_dim = 64  # 128, 256
+z_dim = 256  # 128, 256
 img_dim = 28 * 28
-batch_size = 32
+batch_size = 8
 epochs = 50
 
 disc = Discriminator(img_dim).to(device)
@@ -66,25 +67,24 @@ for epoch in tqdm(range(epochs), total=epochs, desc="Epoch"):
             batch_size = real.shape[0]
 
             noise = torch.randn(batch_size, z_dim).to(device)
-            fake = gen(noise)
+            fake = gen(noise).to(device)
 
             # Train discriminator: max log(D(real) + log(1 - D(G(z))
             disc_real = disc(real).view(-1)
-            loss_disc_real = criterion(disc_real, torch.ones_like(disc_real))
+            loss_disc_real = criterion(disc_real, torch.ones(disc_real.shape).to(device))
             disc_fake = disc(fake).view(-1)
-            loss_disc_fake = criterion(fake, torch.zeros_like(disc_fake))
-            loss_disc = (disc_real - disc_fake) / 2
+            loss_disc_fake = criterion(disc_fake, torch.zeros(disc_fake.shape).to(device))
+            loss_disc = (loss_disc_real - loss_disc_fake) / 2
             disc.zero_grad()
             loss_disc.backward(retain_graph=True)  # retain graph for reuse of fake matrix
             opti_d.step()
 
             # Train generator: min log(1 - D(G(z))) <-> max log(D(G(z))
             output = disc(fake).view(-1)
-            loss_gen = criterion(output, torch.ones_like(output))
+            loss_gen = criterion(output, torch.ones(output.shape).to(device))
             gen.zero_grad()
             loss_gen.backward()
-            opti_g.step()
-            progress_datafeed.desc = f"D:{loss_disc:.3f} G:{loss_gen:.3f}"
+            progress_datafeed.desc = f"{loss_disc:.3f}/{loss_gen:.3f}"
             if batch_idx == 0:
                 with torch.no_grad():
                     fake = gen(fixed_noise).reshape(-1, 1, 28, 28)
