@@ -1,6 +1,6 @@
 # Deep learning data and TensorBoard runs
-deep_learning/data
-deep_learning/runs
+neural-networks/data
+neural-networks/runs
 
 # Runtime cache directories
 __pycache__
