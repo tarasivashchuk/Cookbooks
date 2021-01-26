@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "gpt-data"
+version = "1.0.0"
+description = "Data preprocessing operations for finetuning GPT-2"
+authors = ["Taras Ivashchuk"]
+license = "MIT"
+
+[tool.poetry.scripts]
+merge = "gpt_data.merge:run"
+convert = "gpt_data.convert:run"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+tqdm = "^4.54.1"
+"pdfminer.six" = "^20201018"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+isort = "*"
+pytest = "*"
+flake8 = "*"
+
+[tool.black]
+line-length = 100
+verbose = true
+inplace = true
+target-version = ["py38"]
+
+[tool.isort]
+line_length = 100
+balanced_wrapping = true
+use_parentheses = true
+lines_after_imports = 2
+combine_as_imports = true
+profile = "black"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
